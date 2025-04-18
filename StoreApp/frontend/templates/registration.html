@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+    <script>
+        const urlForm = "{% url 'reg_user' %}";
+        const urlBase = "{% url 'index' %}"
+    </script>
+</head>
+<body>
+<div class="centered-container">
+    <div class="login-container">
+        <form id="registrationForm" method="POST">
+            {% csrf_token %}
+            <h2>Регистрация</h2>
+            <input type="text" name="user" id="username" placeholder="Имя пользователя" required>
+            <input type="password" name="password" id="password" placeholder="Пароль" required>
+            <button type="button">Зарегистрироваться</button>
+            <div id="message" style="color: red;"></div>
+        </form>
+    </div>
+</div>
+<div class="message" style="color: red; font-size: 16px"></div>
+<a href="{% url 'auth_form' %}" class="linkAuth">Уже есть аккаунт?</a>
+
+</body>
+<script src="{% static 'js/registration.js' %}"></script>
+</html>
