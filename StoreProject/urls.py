@@ -17,7 +17,10 @@ urlpatterns = [
     path('account/', views.account, name='account'),
     path('liked/', views.liked, name='liked'),
     path('changePassword/', views.changePassword, name='changePassword'),
+<<<<<<< HEAD
     path('changePasswordForm/', views.changePasswordForm, name='changePasswordForm'),
+=======
+>>>>>>> 6595669a3a4a35557f0114ef1d6dcb8b6b1911d8
     path('changeNameForm/', views.changeNameForm, name='changeNameForm'),
     path('changeName/', views.changeName, name='changeName'),
     path('exitAccount/', views.exitAccount, name='exitAccount')

@@ -1,5 +1,9 @@
 from django.contrib.auth import logout
+<<<<<<< HEAD
 from django.contrib.auth.hashers import check_password, make_password
+=======
+from django.contrib.auth.hashers import check_password
+>>>>>>> 6595669a3a4a35557f0114ef1d6dcb8b6b1911d8
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 import logging
@@ -10,8 +14,11 @@ from StoreApp.models import User
 logger = logging.getLogger(__name__)
 
 def Index(request):
+<<<<<<< HEAD
     for key, value in request.session.items():
         print(f"{key}: {value}")
+=======
+>>>>>>> 6595669a3a4a35557f0114ef1d6dcb8b6b1911d8
     return render(request, 'index.html')
 
 def basket(request):
@@ -27,6 +34,7 @@ def liked(request):
 
 def changePasswordForm(request):
     if 'user_id' in request.session:
+<<<<<<< HEAD
         return render(request, 'changePassword.html')
     else:
         return render(request, 'index.html')
@@ -46,18 +54,38 @@ def changePassword(request):
         password_confirm = request.POST.get('confirm_password')
         if check_password(password_now, user.password):
             if password_new == password_confirm and password_new != None:
+=======
+        return render(request, 'changePassword')
+    else:
+        return render(request, 'index')
+
+def changePassword(request):
+    if request.method == 'POST':
+        if 'user_id' in request.session:
+            user = User.objects.get(id=request.session['user_id'])
+            password_now = request.POST.get('current_password')
+            password_new = request.POST.get('password')
+            password_confirm = request.POST.get('confirm_password')
+
+            if check_password(password_now, user.password):
+>>>>>>> 6595669a3a4a35557f0114ef1d6dcb8b6b1911d8
                 if password_new == password_confirm and password_new != None:
                     try:
                         user.set_password(password_new)
                         user.save()
                         return JsonResponse({
                             'message': 'Вы успешно поменяли пароль',
+<<<<<<< HEAD
                             'reg': True,
                             'registered': True
+=======
+                            'reg': True
+>>>>>>> 6595669a3a4a35557f0114ef1d6dcb8b6b1911d8
                         })
 
                     except Exception as e:
                         return JsonResponse({
+<<<<<<< HEAD
                             'message': f'Ошибка на стороне сервера, пожалуйста, попробуйте позже {user_id} {e}',
                             'reg': False,
                             'registered': True
@@ -67,10 +95,25 @@ def changePassword(request):
                     'reg': False,
                     'message': 'Нужно ввести новый пароль два раза! Они должны быть одинаковыми',
                     'registered': True
+=======
+                            'message': 'Ошибка на стороне сервера, пожалуйста, попробуйте позже',
+                            'reg': False
+                        })
+                else:
+                    return JsonResponse(request, 'changePassword.html', context={
+                        'reg': False,
+                        'message': 'Нужно ввести новый пароль два раза! Они должны быть одинаковыми'
+                    })
+            else:
+                return JsonResponse({
+                    'reg': False,
+                    'message': 'В базе данных такого пароля нет'
+>>>>>>> 6595669a3a4a35557f0114ef1d6dcb8b6b1911d8
                 })
         else:
             return JsonResponse({
                 'reg': False,
+<<<<<<< HEAD
                 'message': 'В базе данных такого пароля нет',
                 'registered': True
             })
@@ -80,6 +123,14 @@ def changePassword(request):
             return render(request, 'changePassword.html', context={'registered': True})
         else:
             return redirect('index')
+=======
+                'message': 'Сначала нужно зарегистрироваться',
+                'registered': False
+            })
+    else:
+        return render(request, 'changePassword.html')
+
+>>>>>>> 6595669a3a4a35557f0114ef1d6dcb8b6b1911d8
 def changeNameForm(request):
     if 'user_id' in request.session:
         username = request.session.get('username')
@@ -89,9 +140,13 @@ def changeNameForm(request):
 
 @csrf_exempt
 def changeName(request):
+<<<<<<< HEAD
     print('воооооооооооооооооо')
     if request.method == 'POST':
         print("11111111111111111111111111111111111111111")
+=======
+    if request.method == 'POST':
+>>>>>>> 6595669a3a4a35557f0114ef1d6dcb8b6b1911d8
         new_username = request.POST.get('new_name')  # Получаем 'new_name' из формы!
         if 'user_id' in request.session:
             try:
@@ -127,3 +182,7 @@ def exitAccount(request):
     else:
         return redirect('account')
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6595669a3a4a35557f0114ef1d6dcb8b6b1911d8
