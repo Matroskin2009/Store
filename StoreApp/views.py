@@ -31,6 +31,7 @@ def changePasswordForm(request):
     else:
         return render(request, 'index.html')
 
+
 def changePassword(request):
     user_id = request.session['user_id']
     if user_id:
@@ -125,5 +126,4 @@ def exitAccount(request):
         return JsonResponse({'message': 'Вы успешно вышли из аккаунта', 'success': True}, status=200)
     else:
         return redirect('account')
-
 
