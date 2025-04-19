@@ -33,11 +33,6 @@ def changePasswordForm(request):
 
 def changePassword(request):
     user_id = request.session['user_id']
-    if user_id:
-        print('Та все ок')
-    else:
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        print(user_id)
     if request.method == 'POST':
         user = User.objects.get(id=request.session['user_id'])
         password_now = request.POST.get('current_password')
@@ -75,10 +70,8 @@ def changePassword(request):
             })
 
     else:
-        if 'user_id' in request.session:
-            return render(request, 'changePassword.html', context={'registered': True})
-        else:
-            return redirect('index')
+        return render(request, 'changePassword.html')
+
 def changeNameForm(request):
     if 'user_id' in request.session:
         username = request.session.get('username')
