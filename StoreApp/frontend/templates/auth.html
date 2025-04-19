@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>Авторизация</title>
+    <script>
+        const urlForm = "{% url 'auth_users' %}";  // URL для авторизации
+        const urlBase = "{% url 'index' %}"  // URL для перенаправления после успешной авторизации
+    </script>
+</head>
+<body>
+<div class="centered-container">
+    <div class="auth-container">
+        <form id="authForm" method="POST">
+            {% csrf_token %}
+            <h2>Авторизация</h2>
+            <input type="text" name="username" id="username" placeholder="Имя пользователя" required>
+            <input type="password" name="password" id="password" placeholder="Пароль" required>
+            <button type="button" id="authButton">Войти</button>
+        </form>
+    </div>
+</div>
+<div id="message" style="color: red;"></div>
+</body>
+<script src="{% static 'js/auth.js' %}"></script>
+</html>
