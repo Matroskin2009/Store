@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Регистрация</title>
-    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/AuthReg.css' %}">
     <script>
         const urlForm = "{% url 'reg_user' %}";
         const urlBase = "{% url 'index' %}"
@@ -21,11 +21,13 @@
             <input type="password" name="password" id="password" placeholder="Пароль" required>
             <button type="button">Зарегистрироваться</button>
             <div id="message" style="color: red;"></div>
+            <a href="{% url 'auth_form' %}" class="linkAuth">Уже есть акканут?</a>
         </form>
     </div>
 </div>
+<a href="{% url 'index' %}" class="apply-button">На главную</a>
 <div class="message" style="color: red; font-size: 16px"></div>
-<a href="{% url 'auth_form' %}" class="linkAuth">Уже есть аккаунт?</a>
+
 
 </body>
 <script src="{% static 'js/registration.js' %}"></script>

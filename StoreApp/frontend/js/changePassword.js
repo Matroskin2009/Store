@@ -17,11 +17,6 @@ applyButton.addEventListener('click', () => {
         return;
     }
 
-    // ВАЖНО: Выводим содержимое FormData в консоль для отладки
-    for (let pair of formData.entries()) {
-        console.log(pair[0]+ ', '+ pair[1]);
-    }
-
     fetch(urlForm, {
         method: 'POST',
         headers: {
@@ -33,7 +28,7 @@ applyButton.addEventListener('click', () => {
         .then(data => {
             if (data.reg) {
                 alert(data.message);
-                message.textContent = data.message
+                location.reload()
             } else {
                 alert(data.message);
                 message.textContent = data.message
