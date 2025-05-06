@@ -142,5 +142,5 @@ CORS_ALLOWED_ORIGINS = [
     # Добавьте другие домены, если нужно
 ]
 
-
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

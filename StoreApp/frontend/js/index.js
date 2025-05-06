@@ -1,14 +1,12 @@
-
 let buttonDrop = document.querySelectorAll(".buttonDrop");
 let mainDrop = document.querySelector(".dropClass");
+let buttonClose = document.querySelectorAll(".close");
 let sliderItem1 = document.getElementById('item1');
 let sliderItem2 = document.getElementById('item2');
 let sliderItem3 = document.getElementById('item3');
 let sliders = [sliderItem1, sliderItem2, sliderItem3];
 let currentIndex = 0;
-let buttonClose = document.querySelectorAll(".close");
-let formButton = document.querySelector('#authForm>button');
-let form = document.querySelector('#authForm');
+
 
 let buttonDropHide = function () {
     buttonDrop.forEach((element) => {
@@ -36,8 +34,6 @@ document.addEventListener('click', (e) => {
 });
 
 //сreate slider
-
-
 function showSlide(index) {
     sliders.forEach(element => {
         element.classList.remove('active');
@@ -61,5 +57,3 @@ buttonClose.forEach((element) => {
         buttonDropHide()
     })
 })
-
-

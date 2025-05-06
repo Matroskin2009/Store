@@ -1,5 +1,8 @@
-
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
+
+
 from django.urls import path
 
 from StoreApp import views
@@ -9,6 +12,9 @@ from StoreApp.User.reg import RegestrationUser
 from StoreApp.Account.Exit import ExitAccount
 from StoreApp.Account.Name import NameAccount
 from StoreApp.Account.Password import PasswordAccount
+from StoreProject import settings
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +31,9 @@ urlpatterns = [
     path('changeNameForm/', NameAccount.changeNameForm, name='changeNameForm'),
     path('changeName/', NameAccount.changeName, name='changeName'),
     path('exitAccount/', ExitAccount.exitAccount, name='exitAccount'),
+    path('products/', views.productList, name='productList'),
+    path('product/<int:product_id>/', views.product_detail, name='catalog')
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

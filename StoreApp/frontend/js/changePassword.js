@@ -1,7 +1,7 @@
 let backButton = document.querySelector('.apply-button')
 let applyButton = document.querySelector('#apply-new-password')
 let message = document.querySelector('.message')
-alert('isdhjfoisuju;')
+
 
 backButton.addEventListener('click', () => {
     location.href = urlIndex
@@ -28,7 +28,6 @@ applyButton.addEventListener('click', () => {
         .then(data => {
             if (data.reg) {
                 alert(data.message);
-                location.reload()
             } else {
                 alert(data.message);
                 message.textContent = data.message
