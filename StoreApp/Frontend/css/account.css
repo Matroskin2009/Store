@@ -1,0 +1,173 @@
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-image: url("https://fsd.multiurok.ru/html/2019/01/10/s_5c37480636665/1048065_1.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.account-container {
+    position: relative;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.account-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://fsd.multiurok.ru/html/2019/01/10/s_5c37480636665/1048065_1.jpeg"); /* Тот же фон, что и у body */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    z-index: -1;
+}
+
+
+.account-header {
+    margin-bottom: 30px;
+}
+
+.account-text {
+    color: #333;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Информация об аккаунте */
+.account-info {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+}
+
+.info-item i {
+    margin-right: 15px;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+.info-item span {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.info-item span:nth-child(2) {
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.info-item span:last-child {
+    font-weight: 500;
+    color: #333;
+}
+
+.account-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.action-link {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.action-link:hover {
+    background-color: #0056b3;
+}
+
+.action-link i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.action-link.logout {
+    background-color: #dc3545;
+}
+
+.action-link.logout:hover {
+    background-color: #c82333;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .account-container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .account-text {
+        font-size: 2rem;
+    }
+
+    .info-item span {
+        font-size: 1rem;
+    }
+
+    .action-link {
+        font-size: 0.9rem;
+    }
+}
+
+.apply-button {
+    position: fixed;
+    bottom: 94%;
+    right: 25px;
+    z-index: 1000;
+    background-color: #3276b1;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.apply-button:hover {
+    background-color: #286090;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

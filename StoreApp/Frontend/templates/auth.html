@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/AuthReg.css' %}">
+    <title>Авторизация</title>
+    <script>
+        const urlForm = "{% url 'auth_users' %}";  // URL для авторизации. auth url
+        const urlBase = "{% url 'index' %}"  // URL для перенаправления после успешной авторизации. url to index
+    </script>
+</head>
+<body>
+<div class="centered-container">
+    <div class="auth-container">
+        <form id="authForm" method="POST">
+            {% csrf_token %}
+            <h2>Авторизация</h2>
+            <div id="message" class="messageError" style="color: red;"></div>
+            <input type="text" name="username" id="username" placeholder="Имя пользователя" required>
+            <input type="password" name="password" id="password" placeholder="Пароль" required>
+            <button type="button" id="authButton">Войти</button>
+            <a href="{% url 'reg_form' %}" class="linkAuth">На регистрацию</a>
+        </form>
+    </div>
+    <a href="{% url 'index' %}" class="apply-button">На главную</a>
+</div>
+
+</body>
+<script src="{% static 'js/auth.js' %}"></script>
+</html>

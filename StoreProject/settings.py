@@ -58,7 +58,7 @@ ROOT_URLCONF = 'StoreProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "StoreApp/frontend/templates")],
+        'DIRS': [os.path.join(BASE_DIR, "StoreApp/Frontend/templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'StoreProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'clicker',
+        'NAME': 'SiteDb',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',
@@ -132,7 +132,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'css')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'StoreApp', 'frontend'),  # Absolute path to your frontend dir
+    os.path.join(BASE_DIR, 'StoreApp', 'Frontend'),  # Absolute path to your Frontend dir
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -144,3 +144,7 @@ CORS_ALLOWED_ORIGINS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+LOGIN_URL = 'reg_form'
+
+AUTH_USER_MODEL = 'auth.User'
