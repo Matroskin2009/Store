@@ -1,39 +1,39 @@
-let buttonDrop = document.querySelectorAll(".buttonDrop");
-let buttonClose = document.querySelectorAll(".close");
-let sliderItem1 = document.getElementById('item1');
-let sliderItem2 = document.getElementById('item2');
-let sliderItem3 = document.getElementById('item3');
-let sliders = [sliderItem1, sliderItem2, sliderItem3];
-let currentIndex = 0;
+let button_drop = document.querySelectorAll(".buttonDrop");
+let button_close = document.querySelectorAll(".close");
+let slider_item_1 = document.getElementById('item1');
+let slider_item_2 = document.getElementById('item2');
+let slider_item_3 = document.getElementById('item3');
+let sliders = [slider_item_1, slider_item_2, slider_item_3];
+let current_index = 0;
 
 
-let buttonDropHide = function () {
-    buttonDrop.forEach((element) => {
+let button_drop_hide = function () {
+    button_drop.forEach((element) => {
         element.nextElementSibling.style.display = "none";
     });
 };
 
-function isPressDrop(element) {
+function is_press_drop(element) {
     return element.closest(".dropClass") !== null;
 }
 
-buttonDrop.forEach((element) => {
+button_drop.forEach((element) => {
     element.addEventListener("click", (e) => {
         e.stopPropagation();
-        buttonDropHide();
+        button_drop_hide();
         e.currentTarget.nextElementSibling.style.display = "block";
         e.currentTarget.nextElementSibling.style.transform = `translateY(${e.currentTarget.scrollHeight}px)`;
     });
 });
 
 document.addEventListener('click', (e) => {
-    if (!isPressDrop(e.target)) {
-        buttonDropHide();
+    if (!is_press_drop(e.target)) {
+        button_drop_hide();
     }
 });
 
 //сreate slider
-function showSlide(index) {
+function show_slide(index) {
     sliders.forEach(element => {
         element.classList.remove('active');
     });
@@ -41,18 +41,18 @@ function showSlide(index) {
     sliders[index].classList.add('active');
 }
 
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % sliders.length;
-    showSlide(currentIndex);
+function next_slide() {
+    current_index = (current_index + 1) % sliders.length;
+    show_slide(current_index);
 }
 
-showSlide(currentIndex);
+show_slide(current_index);
 
-setInterval(nextSlide, 3000);
+setInterval(next_slide, 3000);
 
 
-buttonClose.forEach((element) => {
+button_close.forEach((element) => {
     element.addEventListener('click', (e) => {
-        buttonDropHide()
+        button_drop_hide()
     })
 })

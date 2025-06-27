@@ -1,28 +1,28 @@
-document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', function (e) {
+document.querySelectorAll('.product-card').forEach(product_card => {
+    product_card.addEventListener('click', function (e) {
         e.preventDefault(); // Предотвращаем переход по ссылке
-        const productCard = e.target.closest('.product-card');
-        const productId = e.target.getAttribute('data-product-id');
+        const product_card_elem = e.target.closest('.product-card');
+        const product_id = e.target.getAttribute('data-product-id');
         let quantity = parseInt(e.target.getAttribute('data-quantity'));
-        let urlMinus = urlMinus0.replace('0', productId);
-        let urlPlus = urlPlus0.replace('0', productId);
-        let urlDelete = urlDelete0.replace('0', productId);
-        let allPriceElement = document.querySelector('.price');
-        let allPrice = allPriceElement.textContent.trim();
+        let url_minus = url_minus0.replace('0', product_id);
+        let url_plus = url_plus0.replace('0', product_id);
+        let url_delete = url_delete0.replace('0', product_id);
+        let all_price_element = document.querySelector('.price');
+        let all_price = parseInt(all_price_element.textContent.trim()) || 0;
 
-        let Fetch = function (urlFetch, productId){
-            fetch(urlFetch, {
+        let fetch_data = function (url_fetch, product_id){
+            fetch(url_fetch, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken
+                    'X-CSRFToken': csrf_token
                 },
-                body: JSON.stringify({ 'productId': productId, 'price': allPrice})
+                body: JSON.stringify({ 'productId': product_id, 'price': all_price})
             })
                 .then(response => response.json())
                 .then(data => {
                     if (data.d){
-                        productCard.remove();
+                        product_card_elem.remove();
                         if (document.querySelectorAll('.product-card').length === 0) {
                             document.querySelector('.product-grid').style.display = 'none';
                             document.querySelector('.no-products-two').style.display = 'block';
@@ -30,39 +30,39 @@ document.querySelectorAll('.product-card').forEach(card => {
                     }
                     document.querySelector('.price').textContent = data.price
                     if (data.success) {
-                        productCard.querySelector('.count').textContent = `Количество: ${data.newQuantity}`;
-                        productCard.querySelector('.price-cart').textContent = `Цена: ${data.newPrice} ₽`;
-                        quantity = data.newQuantity;
-                        productCard.querySelector('.button-plus').setAttribute('data-quantity', data.newQuantity);
-                        productCard.querySelector('.button-minus').setAttribute('data-quantity', data.newQuantity);
+                        product_card_elem.querySelector('.count').textContent = `Количество: ${data.new_quantity}`;
+                        product_card_elem.querySelector('.price-cart').textContent = `Цена: ${data.new_price} ₽`;
+                        quantity = data.new_quantity;
+                        product_card_elem.querySelector('.button-plus').setAttribute('data-quantity', data.new_quantity);
+                        product_card_elem.querySelector('.button-minus').setAttribute('data-quantity', data.new_quantity);
                     } else {
                         alert('Ошибка');
                     }
                 });
         }
 
-        if (!productCard) return;
+        if (!product_card_elem) return;
 
         if (e.target.classList.contains('button-plus')) {
-            Fetch(urlPlus);
+            fetch_data(url_plus);
         } else if (e.target.classList.contains('button-minus')) {
             if (quantity > 1) {
-                Fetch(urlMinus);
+                fetch_data(url_minus);
             } else {
                 let ask = confirm('Удалить товар из корзины?')
                 if (ask){
-                    Fetch(urlDelete);
+                    fetch_data(url_delete);
                 }
             }
         } else if (e.target.classList.contains('button-delete')){
             let ask = confirm('Удалить товар из корзины?')
             if (ask){
-                Fetch(urlDelete);
+                fetch_data(url_delete);
             }
 
         } else {
-            const baseUrl = productCard.querySelector('.product-image').dataset.detailUrl.replace('0', productId);
-            window.location.href = baseUrl;
+            const base_url = product_card_elem.querySelector('.product-image').dataset.detailUrl.replace('0', product_id);
+            window.location.href = base_url;
         }
     });
 });

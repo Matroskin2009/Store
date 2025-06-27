@@ -1,4 +1,3 @@
-
 from django.contrib.auth.models import User
 
 
@@ -12,7 +11,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class SubCategory(models.Model):  # Выносим как отдельную модель
+class SubCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='subcategories')
 
@@ -20,7 +19,7 @@ class SubCategory(models.Model):  # Выносим как отдельную м�
         return self.name
 
 class Product(models.Model):
-    #id = models.AutoField(primary_key=True, db_index=True)
+    id = models.AutoField(primary_key=True, db_index=True)
     title = models.CharField(max_length=600, blank=True, null=True)
     price = models.IntegerField(blank=True, null=True)
     warranty = models.IntegerField(blank=True, null=True)
@@ -66,7 +65,7 @@ class CartItem(models.Model):
 
 class Product3DModel(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='models_3d')
-    model_file = models.FileField(upload_to='StoreProject/StoreApp/models3d/')  # Загрузка файла 3D-модели
+    model_file = models.FileField(upload_to='StoreProject/StoreApp/models3d/')
     description = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):

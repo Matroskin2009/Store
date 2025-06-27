@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Регистрация</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/AuthReg.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/auth_&_reg.css' %}">
     <script>
-        const csrfToken = '{{ csrf_token }}';
-        const urlForm = "{% url 'reg_user' %}"; // url на регистрацию. url to registration
-        const urlBase = "{% url 'index' %}" // url главной страницы. url index
+        const csrf_token = '{{ csrf_token }}';
+        const url_form = "{% url 'reg_user' %}"; // url на регистрацию. url to registration
+        const url_base = "{% url 'index' %}" // url главной страницы. url index
     </script>
 </head>
 <body>

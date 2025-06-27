@@ -10,13 +10,13 @@ logger = logging.getLogger(__name__)
 
 class RegestrationUser:
     @staticmethod
-    def regForm(request):
+    def reg_form(request):
         if 'user_id' in request.session:
             return redirect('index')
         return render(request, 'registration.html')
 
     @staticmethod
-    def addUsers(request):  # type: (HttpRequest) -> JsonResponse
+    def add_users(request):  # type: (HttpRequest) -> JsonResponse
         if 'user_id' in request.session:
             return JsonResponse({'reg': True}, status=200)
 

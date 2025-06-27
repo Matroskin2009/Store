@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сменить имя</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/changeNamePassword.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/change_name_&_password.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
-        const urlIndex = "{% url 'index' %}"; // url для главной странице. index page url
-        const urlForm = "{% url 'changeName' %}"; // url для обработки смены имени. url for change name
+        const url_index = "{% url 'index' %}"; // url для главной странице. index page url
+        const url_form = "{% url 'change_name' %}"; // url для обработки смены имени. url for change name
     </script>
 </head>
 <body>
@@ -23,9 +23,9 @@
         <h2>Ваше имя сейчас: {{ name }}</h2>
         <input type="text" id="new-name" name="new_name" placeholder="Введите новое имя">
         <button type="button" id="apply-new-name">Применить</button>
-    </form> <!-- Closing </form> tag -->
+    </form>
     <a href="{% url 'index' %}"><button type="button" class="apply-button">На главную</button></a>
 </div>
-<script src="{% static 'js/changeName.js' %}"></script>
+<script src="{% static 'js/change_name.js' %}"></script>
 </body>
 </html>

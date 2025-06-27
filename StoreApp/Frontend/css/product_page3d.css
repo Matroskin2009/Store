@@ -5,15 +5,14 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
-/* Основной контейнер — флекс по вертикали */
+
 .main-wrapper {
     display: flex;
-    flex-direction: column; /* делит на колонку */
+    flex-direction: column;
     width: 100%;
     height: 100%;
 }
 
-/* Контейнер для 3D модели */
 .model-container {
     width: 100%;
     border: 2px solid #170f0f;
@@ -21,16 +20,14 @@ html, body {
     overflow: auto;
 }
 
-/* Контейнер для 3D модели — занимает верхнюю часть */
 .model-container {
-    height: 100%; /* можно изменить по желанию */
+    height: 100%;
     background-color: #b1c5f3;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Стиль для 3D модели */
 .model-viewer {
     display: block;
     width: 100%;
@@ -47,13 +44,13 @@ html, body {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: black;
+    transition: background-color 0.3s ease
 }
 
 .to-basket:hover {
     background-color: #a80101;
 }
+
 
 .back-button {
     position: fixed;

@@ -1,22 +1,22 @@
-let formButton = document.querySelector('#authForm>button');
+let form_button = document.querySelector('#authForm>button');
 let form = document.querySelector('#authForm');
-let messageError = document.querySelector('#message');
+let message_error = document.querySelector('#message');
 
-formButton.addEventListener('click', e => {
-    let formData = new FormData(form);
-    fetch(urlForm, {
+form_button.addEventListener('click', e => {
+    let form_data = new FormData(form);
+    fetch(url_form, {
         method: 'POST',
-        body: formData
+        body: form_data
     })
         .then(response => response.json())
         .then(data => {
             if (data.reg){
-                location.href = urlBase;
+                location.href = url_base;
             }else {
-                messageError.textContent = data.message
+                message_error.textContent = data.message
             }
         })
         .catch(() => {
-           messageError.textContent = 'Ошибка сервера, пожалуйста попробуйте еще раз позднее'
+           message_error.textContent = 'Ошибка сервера, пожалуйста попробуйте еще раз позднее'
         });
 })

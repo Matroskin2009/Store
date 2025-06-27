@@ -87,6 +87,45 @@ body {
     background-color: var(--accent-color);
 }
 
+.to-basket.clicked {
+    background-color: #4caf50;
+    color: #fff;
+    box-shadow: 0 0 20px 5px rgba(76, 175, 80, 0.6);
+    animation: basket-bounce 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    transform: scale(1.08);
+    border: 2px solid #4caf50;
+    background-image: none;
+}
+
+@keyframes basket-bounce {
+    0% {
+        transform: scale(1);
+        background-color: #4caf50;
+        border-color: #4caf50;
+        color: #fff;
+        box-shadow: 0 0 20px 5px rgba(76, 175, 80, 0.6);
+    }
+
+    30%, 50%, 70% {
+        background-color: #66bb6a;
+        border-color: #66bb6a;
+        color: #fff;
+        box-shadow: 0 0 25px 8px rgba(102, 187, 106, 0.7);
+    }
+
+    30% { transform: scale(1.15); }
+    50% { transform: scale(0.95); }
+    70% { transform: scale(1.05); }
+
+    100% {
+        transform: scale(1.08);
+        background-color: #4caf50;
+        border-color: #4caf50;
+        color: #fff;
+        box-shadow: 0 0 20px 5px rgba(76, 175, 80, 0.6);
+    }
+}
+
 .product-title {
     font-size: 2.5rem;
     font-weight: 700;
@@ -257,7 +296,6 @@ body {
     }
 }
 
-/* Мягкий, светящийся эффект с пониженной яркостью */
 .mega-glow {
     display: inline-block;
     font-size: 20px;
@@ -271,20 +309,18 @@ body {
     animation: gradientShift 20s ease infinite;
     box-shadow: 0 0 10px #fff, 0 0 20px #ff6688, 0 0 30px #66cc66, 0 0 40px #6699ff;
     transition: all 0.3s ease;
-    opacity: 0.8; /* Сделать чуть прозрачнее для меньшей яркости */
+    opacity: 0.8;
     margin-top: 5px;
 }
 
-/* При наведении чуть усиливаем эффект, оставаясь мягким */
 .mega-glow:hover {
     cursor: pointer;
     box-shadow: 0 0 15px #fff, 0 0 25px #ff6688, 0 0 35px #66cc66, 0 0 45px #6699ff;
     transform: scale(1.03);
     text-shadow: 0 0 8px #fff;
-    opacity: 1; /* Сделать ярче при наведении, чтобы эффект был заметнее */
+    opacity: 1;
 }
 
-/* Плавный переход градиента */
 @keyframes gradientShift {
     0% {
         background-position: 0% 50%;

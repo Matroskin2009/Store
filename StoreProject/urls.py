@@ -9,35 +9,35 @@ from StoreApp import views
 from StoreApp.PythonCode.User.auth import AuthUser
 from StoreApp.PythonCode.User.reg import RegestrationUser
 
-from StoreApp.PythonCode.Account.Exit import ExitAccount
-from StoreApp.PythonCode.Account.Name import NameAccount
-from StoreApp.PythonCode.Account.Password import PasswordAccount
+from StoreApp.PythonCode.Account.exit_account import ExitAccount
+from StoreApp.PythonCode.Account.name_account import NameAccount
+from StoreApp.PythonCode.Account.password_account import PasswordAccount
 from StoreProject import settings
-from StoreApp.PythonCode.Basket.Basket import ButtonsBasket, BasketPage
+from StoreApp.PythonCode.Basket.basket_page import ButtonsBasket, BasketPage
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('reg_user/', RegestrationUser.addUsers, name='reg_user'),
-    path('reg_form/', RegestrationUser.regForm, name='reg_form'),
+    path('reg_user/', RegestrationUser.add_users, name='reg_user'),
+    path('reg_form/', RegestrationUser.reg_form, name='reg_form'),
     path('auth_form/', AuthUser.auth_form, name='auth_form'),
     path('auth/', AuthUser().users_auth, name='auth_users'),
-    path('index/', views.Index, name='index'),
-    path('basket/', BasketPage.toBasket, name='basket'),
+    path('index/', views.index, name='index'),
+    path('basket/', BasketPage.to_basket, name='basket'),
     path('account/', views.account, name='account'),
-    path('changePassword/', PasswordAccount.changePassword, name='changePassword'),
-    path('changePasswordForm/', PasswordAccount.changePasswordForm, name='changePasswordForm'),
-    path('changeNameForm/', NameAccount.changeNameForm, name='changeNameForm'),
-    path('changeName/', NameAccount.changeName, name='changeName'),
-    path('product/<int:product_id>/add_to_cart/', views.addCart, name='addCart'),
-    path('exitAccount/', ExitAccount.exitAccount, name='exitAccount'),
-    path('products/', views.productList, name='productList'),
-    path('product/<int:product_id>/', views.productPage, name='productPage'),
-    path('product3d/<int:product_id>/', views.productPage3d, name='productPage3d'),
-    path('basketMinus/<int:productId>/', ButtonsBasket.buttonMinus, name='buttonMinus'),
-    path('basketPlus/<int:productId>/', ButtonsBasket.buttonPlus, name='buttonPlus'),
-    path('basketDelete/<int:productId>/', ButtonsBasket.buttonDelete, name='buttonDelete'),
+    path('change_password/', PasswordAccount.change_password, name='change_password'),
+    path('change_password_form/', PasswordAccount.change_password_form, name='change_password_form'),
+    path('change_name_form/', NameAccount.change_name_form, name='change_name_form'),
+    path('change_name/', NameAccount.change_name, name='change_name'),
+    path('product/<int:product_id>/add_to_cart/', views.add_cart, name='add_cart'),
+    path('exit_account/', ExitAccount.exit_account, name='exit_account'),
+    path('products/', views.product_list, name='product_list'),
+    path('product/<int:product_id>/', views.product_page, name='product_page'),
+    path('product3d/<int:product_id>/', views.product_page3d, name='product_page3d'),
+    path('basket_minus/<int:product_id>/', ButtonsBasket.button_minus, name='button_minus'),
+    path('basket_plus/<int:product_id>/', ButtonsBasket.button_plus, name='button_plus'),
+    path('basket_delete/<int:product_id>/', ButtonsBasket.button_delete, name='button_delete'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

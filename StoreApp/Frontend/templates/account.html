@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <script>
-    let urlForm = "{% url 'exitAccount' %}"; // url для выхода из аккаунта. url for the exit from account
-    let urlReg = "{% url 'reg_form' %}"; // url регистрации. registration url
+    let url_form = "{% url 'exit_account' %}"; // url для выхода из аккаунта. url for the exit from account
+    let url_reg = "{% url 'reg_form' %}"; // url регистрации. registration url
 </script>
 <body>
 <div class="account-container">
@@ -31,17 +31,17 @@
         <div class="info-item">
             <i class="fas fa-shopping-cart"></i>
             <span>Количество заказов:</span>
-            <span>{{ orderCount }}</span>
+            <span>{{ order_count }}</span>
         </div>
     </div>
 
     <div class="account-actions">
-        <a href="{% url 'changePassword' %}" class="action-link">
+        <a href="{% url 'change_password' %}" class="action-link">
             <i class="fas fa-key"></i>
             <span>Сменить пароль</span>
         </a>
 
-        <a href="{% url 'changeName' %}" class="action-link">
+        <a href="{% url 'change_name' %}" class="action-link">
             <i class="fas fa-edit"></i>
             <span>Сменить имя</span>
         </a>

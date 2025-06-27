@@ -1,14 +1,14 @@
 let form = document.querySelector('#form');
-let exitButton = document.querySelector('.Exit');
+let exit_button = document.querySelector('.Exit');
 
-exitButton.addEventListener('click', (e) => {
+exit_button.addEventListener('click', (e) => {
     let check = prompt(
         'Убедитесь, что вы сохранили данные аккаунта, в противном случае вы можете их потерять. Для выхода напишите "ВЫХОД"'
     );
     if (check !== null) {
         check = check.toLowerCase();
         if (check === "выход") {
-            fetch(urlForm, {
+            fetch(url_form, {
                 method: 'POST',
                 body: null,
             })
@@ -16,7 +16,7 @@ exitButton.addEventListener('click', (e) => {
                 .then(data => {
                     if (data.success) {
                         alert(data.message);
-                        location.href = urlReg;
+                        location.href = url_reg;
                     } else {
                         alert('Ошибка: ' + (data.message || 'неизвестная ошибка'));
                     }

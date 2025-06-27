@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/AuthReg.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/auth_&_reg.css' %}">
     <title>Авторизация</title>
     <script>
-        const urlForm = "{% url 'auth_users' %}";  // URL для авторизации. auth url
-        const urlBase = "{% url 'index' %}"  // URL для перенаправления после успешной авторизации. url to index
+        const url_form = "{% url 'auth_users' %}";  // URL для авторизации. auth url
+        const url_base = "{% url 'index' %}"  // URL для перенаправления после успешной авторизации. url to index
     </script>
 </head>
 <body>

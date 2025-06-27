@@ -5,7 +5,7 @@ import logging
 from StoreApp.models import Product, Category, SubCategory, CartItem
 logger = logging.getLogger(__name__)
 # The main page
-def Index(request):
+def index(request):
     subcategories = SubCategory.objects.filter(products__isnull=False).distinct()
     categories = Category.objects.filter(products__isnull=False).distinct()
     user_id = request.session.get('user_id')
@@ -13,12 +13,12 @@ def Index(request):
 
 # Redirects and displays the name and number of orders for this user
 def account(request):
-    orderCount = 0
+    order_count = 0
     username = request.session.get('username')
-    return render(request, 'account.html', context={'name': username, 'orderCount': orderCount})
+    return render(request, 'account.html', context={'name': username, 'order_count': order_count})
 
 # The list of products with sorting functionality
-def productList(request):
+def product_list(request):
     user_id = request.session.get('user_id')
 
     search_query = request.GET.get('q')
@@ -97,25 +97,25 @@ def productList(request):
         'current_subcategory': subcategory_id,
     }
 
-    return render(request, 'productList.html', context)
+    return render(request, 'product_list.html', context)
 
 # Product review page
-def productPage(request, product_id):
+def product_page(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     user_id = request.session.get('user_id')
-    return render(request, 'productPage.html', context={'product': product, 'user_id': user_id})
+    return render(request, 'product_page.html', context={'product': product, 'user_id': user_id})
 
-def productPage3d(request, product_id):
+def product_page3d(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     if product.model_3d:
         product_model3d = product.model_3d
     else:
         product_model3d = None
     user_id = request.session.get('user_id')
-    return render(request, 'test.html', context={'product': product, 'user_id': user_id, 'model3d': product_model3d})
+    return render(request, 'product_page3d.html', context={'product': product, 'user_id': user_id, 'model3d': product_model3d})
 
 # Add to basket
-def addCart(request, product_id):
+def add_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
 
     item, created = CartItem.objects.get_or_create(
@@ -128,4 +128,5 @@ def addCart(request, product_id):
         item.quantity += 1
         item.save()
 
-    return JsonResponse({'response': True})
+
+    return JsonResponse({'response': True, 'total_price': total_price})

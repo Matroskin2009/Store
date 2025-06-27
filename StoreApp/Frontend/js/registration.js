@@ -1,15 +1,15 @@
-let formButton = document.querySelector('#registrationForm>button');
+let form_button = document.querySelector('#registrationForm>button');
 let form = document.querySelector('#registrationForm');
-let messageError = document.querySelector('.message');
+let message_error = document.querySelector('.message');
 
-formButton.addEventListener('click', e => {
+form_button.addEventListener('click', e => {
     e.preventDefault();
-    let formData = new FormData(form);
-    fetch(urlForm, {
+    let form_data = new FormData(form);
+    fetch(url_form, {
         method: 'POST',
-        body: formData,
+        body: form_data,
         headers: {
-            'X-CSRFToken': csrfToken
+            'X-CSRFToken': csrf_token
         }
     })
         .then(response => {
@@ -20,13 +20,9 @@ formButton.addEventListener('click', e => {
         })
         .then(data => {
             if (data.reg) {
-                location.href = urlBase;
+                location.href = url_base;
             } else {
-                messageError.textContent = data.message;
+                message_error.textContent = data.message;
             }
         })
- /*       .catch((e) => {
-            messageError.textContent = 'Проверьте все ли впорядке с полями ввода, но возможна и ошибка сервера';
-        });
-  */
 });

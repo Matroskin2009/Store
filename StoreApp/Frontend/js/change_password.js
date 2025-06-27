@@ -1,28 +1,28 @@
-let backButton = document.querySelector('.apply-button')
-let applyButton = document.querySelector('#apply-new-password')
+let back_button = document.querySelector('.apply-button')
+let apply_button = document.querySelector('#apply-new-password')
 let message = document.querySelector('.message')
 
 
-backButton.addEventListener('click', () => {
-    location.href = urlIndex
+back_button.addEventListener('click', () => {
+    location.href = url_index
 })
 
-applyButton.addEventListener('click', () => {
+apply_button.addEventListener('click', () => {
     let form = document.querySelector('.change-password-form');
-    let formData = new FormData(form);
-    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
+    let form_data = new FormData(form);
+    const csrf_token = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
 
-    if (!csrfToken) {
+    if (!csrf_token) {
         message.textContent = 'Ошибка безопасности. Перезагрузите страницу.';
         return;
     }
 
-    fetch(urlForm, {
+    fetch(url_form, {
         method: 'POST',
         headers: {
-            'X-CSRFToken': csrfToken,
+            'X-CSRFToken': csrf_token,
         },
-        body: formData
+        body: form_data
     })
         .then(response => response.json())
         .then(data => {
@@ -32,6 +32,5 @@ applyButton.addEventListener('click', () => {
                 alert(data.message);
                 message.textContent = data.message
             }
-
         })
 })

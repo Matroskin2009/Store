@@ -7,32 +7,31 @@ from StoreApp.models import User
 
 class PasswordAccount:
     @staticmethod
-    def changePasswordForm(request):
+    def change_password_form(request):
         if 'user_id' in request.session:
-            return render(request, 'changePassword.html')
+            return render(request, 'change_password.html')
         else:
             return render(request, 'index.html')
 
     @staticmethod
-    def changePassword(request):
+    def change_password(request):
         user_id = request.session['user_id']
         if request.method == 'POST':
             user = User.objects.get(id=request.session['user_id'])
-            passwordNow = request.POST.get('current_password')
-            passwordNew = request.POST.get('new_password')
-            passwordConfirm = request.POST.get('confirm_password')
-            if check_password(passwordNow, user.password):
-                if passwordNew == passwordConfirm and passwordNew != None:
-                    if passwordNew == passwordConfirm and passwordNew != None:
+            password_now = request.POST.get('current_password')
+            password_new = request.POST.get('new_password')
+            password_confirm = request.POST.get('confirm_password')
+            if check_password(password_now, user.password):
+                if password_new == password_confirm and password_new is not None:
+                    if password_new == password_confirm and password_new is not None:
                         try:
-                            user.set_password(passwordNew)
+                            user.set_password(password_new)
                             user.save()
                             return JsonResponse({
                                 'message': 'Вы успешно поменяли пароль',
                                 'reg': True,
                                 'registered': True
                             })
-
                         except Exception as e:
                             return JsonResponse({
                                 'message': f'Ошибка на стороне сервера, пожалуйста, попробуйте позже {user_id} {e}',
@@ -51,6 +50,5 @@ class PasswordAccount:
                     'message': 'В базе данных такого пароля нет',
                     'registered': True
                 })
-
         else:
-            return render(request, 'changePassword.html')
+            return render(request, 'change_password.html')

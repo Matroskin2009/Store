@@ -89,7 +89,6 @@
     }
 }
 
-/* Сначала для больших экранов */
 @media (min-width: 1201px) {
     .product-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -100,10 +99,9 @@
     }
 }
 
-/* Затем для средних */
 @media (min-width: 700px) and (max-width: 1200px) {
     .product-grid {
-        rid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 

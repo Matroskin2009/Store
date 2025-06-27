@@ -1,15 +1,15 @@
-let backButton = document.querySelector('.apply-button')
-backButton.addEventListener('click', ()=>{
-    location.href = urlIndex
+let back_button = document.querySelector('.apply-button')
+back_button.addEventListener('click', ()=>{
+    location.href = url_index
 })
 
-let changeNameButton = document.querySelector('#apply-new-name')
-changeNameButton.addEventListener('click', e => {
+let change_name_button = document.querySelector('#apply-new-name')
+change_name_button.addEventListener('click', e => {
     let form = document.querySelector('.change-name-form')
-    let formData = new FormData(form);
-    fetch(urlForm, {
+    let form_data = new FormData(form);
+    fetch(url_form, {
         method: 'POST',
-        body: formData
+        body: form_data
     })
         .then(response => response.json())
         .then(data => {
